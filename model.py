@@ -27,7 +27,23 @@ class Trip(db.Model):
     location = db.Column(db.String)
     start_date = db.Column(db.Integer)
     end_date = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, ForeignKey=('users=user_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users=user_id'))
+
+
+class Itineraries(db.Model):
+    """A itinerary."""
+
+    __tablename__= "itineraries"
+
+    itineraries_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    name = db.Column(db.String)
+    category = db.Column(db.String)
+    date = db.Column(db.Integer)
+    time = db.Column(db.Integer)
+    tickets_bought = db.Column(db.Boolean)
+    address = db.Column(db.String)
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
+
 
 
 
