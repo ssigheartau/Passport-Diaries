@@ -54,8 +54,17 @@ class Favorite(db.Model):
     activity_name = db.Column(db.String)
     category = db.Column(db.String)
     trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
-    
 
+
+class Packing(db.Model):
+    """Packing list for a trip."""
+
+    __tablename__= "packings"
+
+    packing_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    item_name = db.Column(db.String)
+    is_packed = db.Column(db.Boolean)
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
 
 
 
