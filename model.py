@@ -17,6 +17,17 @@ class User(db.Model):
     email = db.Column(db.String, unique=True)
 
 
+class Trip(db.Model):
+    """A trip."""
+
+    __tablename__= "trips"
+
+    trip_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    trip_name = db.Column(db.String)
+    location = db.Column(db.String)
+    start_date = db.Column(db.Integer)
+    end_date = db.Column(db.Integer)
+    user_id = db.Column(db.Integer, ForeignKey=('users=user_id'))
 
 
 
@@ -96,3 +107,4 @@ if __name__ == '__main__':
     from server import app
 
     connect_to_db(app)
+    
