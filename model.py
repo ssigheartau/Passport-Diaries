@@ -31,7 +31,7 @@ class Trip(db.Model):
 
 
 class Itineraries(db.Model):
-    """A itinerary."""
+    """An itinerary."""
 
     __tablename__= "itineraries"
 
@@ -45,6 +45,16 @@ class Itineraries(db.Model):
     trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
 
 
+class Favorite(db.Model):
+    """A favorited activity."""
+
+    __tablename__= "favorites"
+
+    favorite_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    activity_name = db.Column(db.String)
+    category = db.Column(db.String)
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
+    
 
 
 
