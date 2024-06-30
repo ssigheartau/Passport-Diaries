@@ -80,6 +80,23 @@ class Transport(db.Model):
     extra_details = db.Column(db.String)
     trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
 
+class Accomodation(db.Model):
+    """Accomodation information."""
+
+    __tablename__= "accomodations"
+
+    accomodation_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    accomodation_type = db.Column(db.String)
+    accomodation_name = db.Column(db.String)
+    confirmation_number = db.Column(db.String)
+    address = db.Column(db.String)
+    check_in = db.Column(db.Integer)
+    check_out = db.Column(db.Integer)
+    start_day = db.Column(db.Integer)
+    end_day = db.Column(db.Integer)
+    extra_details = db.Column(db.String)
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
+
 
 
 
