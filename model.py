@@ -66,7 +66,19 @@ class Packing(db.Model):
     is_packed = db.Column(db.Boolean)
     trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
 
+class Transport(db.Model):
+    """Transportation information."""
 
+    __tablename__= "transportations"
+
+    transportation_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    transport_type = db.Column(db.String)
+    pick_up_time = db.Column(db.Integer)
+    drop_off_time = db.Column(db.Integer)
+    start_day = db.Column(db.Integer)
+    end_day = db.Column(db.Integer)
+    extra_details = db.Column(db.String)
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
 
 
 
