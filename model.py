@@ -98,7 +98,16 @@ class Accomodation(db.Model):
     trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
 
 
+class Budget(db.Model):
+    """Budget sheet for each trip."""
 
+    __tablename__= "budgets"
+
+    budget_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    item_name = db.Column(db.String)
+    amount = db.Column(db.Integer)
+    category = db.Column(db.String)
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
 
 
 
