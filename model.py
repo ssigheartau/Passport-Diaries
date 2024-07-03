@@ -13,8 +13,15 @@ class User(db.Model):
     username = db.Column(db.String(30),unique=True)
     password = db.Column(db.String(8))
     first_name = db.Column(db.String)
-    last_name = db.Coulmn(db.String)
+    last_name = db.Coulumn(db.String)
     email = db.Column(db.String, unique=True)
+
+    trips = db.relationship('Trip', back_populates='user')
+    participants = db.relationship('Participant', back_populates='user')
+
+    def __repr__(self):
+        return f"<User user_id={self.user_id} email={self.email} username={self.username}>"
+
 
 
 class Trip(db.Model):
@@ -27,22 +34,40 @@ class Trip(db.Model):
     location = db.Column(db.String)
     start_date = db.Column(db.Integer)
     end_date = db.Column(db.Integer)
-    user_id = db.Column(db.Integer, db.ForeignKey('users=user_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+
+    itineraries = db.relationship('Itinerary', back_populates='trip')
+    favorites = db.relationship('Favorite', back_populates='trip')
+    packings = db.relationship('Packing', back_populates='trip')
+    transportations = db.relationship('Transport', back_populates='trip')
+    accommodations = db.relationship('Accommodation', back_populates='trip')
+    budgets = db.relationship('Budget', back_populates='trip')
+    todos = db.relationship('ToDo', back_populates='trip')
+    participants = db.relationship('Participant', back_populates='trip')
+
+    def __repr__(self):
+        return f"<Trip trip_id={self.trip_id} trip_name={self.trip_name} location={self.location}>"
 
 
-class Itineraries(db.Model):
+
+class Itinerary(db.Model):
     """An itinerary."""
 
     __tablename__= "itineraries"
 
-    itineraries_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    itinerary_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
     name = db.Column(db.String)
     category = db.Column(db.String)
     date = db.Column(db.Integer)
     time = db.Column(db.Integer)
     tickets_bought = db.Column(db.Boolean)
     address = db.Column(db.String)
-    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
+
+    trip = db.relationship('Trip', back_populates='itineraries')
+
+    def __repr__(self):
+        return f"<Itinerary itinerary_id={self.itinerary_id} name={self.name} category={self.category}>"
 
 
 class Favorite(db.Model):
@@ -53,7 +78,12 @@ class Favorite(db.Model):
     favorite_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
     activity_name = db.Column(db.String)
     category = db.Column(db.String)
-    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
+
+    trip = db.relationship('Trip', back_populates='favorites')
+
+    def __repr__(self):
+        return f"<Favorite favorite_id={self.favorite_id} activity_name={self.activity_name} category={self.category}>"
 
 
 class Packing(db.Model):
@@ -64,7 +94,13 @@ class Packing(db.Model):
     packing_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
     item_name = db.Column(db.String)
     is_packed = db.Column(db.Boolean)
-    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
+
+    trip = db.relationship('Trip', back_populates='packings')
+
+    def __repr__(self):
+        return f"<Packing packing_id={self.packing_id} item_name={self.item_name} is_packed={self.is_packed}>"
+
 
 class Transport(db.Model):
     """Transportation information."""
@@ -78,16 +114,22 @@ class Transport(db.Model):
     start_day = db.Column(db.Integer)
     end_day = db.Column(db.Integer)
     extra_details = db.Column(db.String)
-    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
 
-class Accomodation(db.Model):
-    """Accomodation information."""
+    trip = db.relationship('Trip', back_populates='transportations')
 
-    __tablename__= "accomodations"
+    def __repr__(self):
+        return f"<Transport transportation_id={self.transportation_id} transport_type={self.transport_type} pick_up_time={self.pick_up_time} drop_off_time={self.drop_off_time}>"
 
-    accomodation_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
-    accomodation_type = db.Column(db.String)
-    accomodation_name = db.Column(db.String)
+
+class Accomomdation(db.Model):
+    """Accommodation information."""
+
+    __tablename__= "accommodations"
+
+    accommodation_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    accommodation_type = db.Column(db.String)
+    accommodation_name = db.Column(db.String)
     confirmation_number = db.Column(db.String)
     address = db.Column(db.String)
     check_in = db.Column(db.Integer)
@@ -95,7 +137,12 @@ class Accomodation(db.Model):
     start_day = db.Column(db.Integer)
     end_day = db.Column(db.Integer)
     extra_details = db.Column(db.String)
-    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
+
+    trip = db.relationship('Trip', back_populates='accommodations')
+
+    def __repr__(self):
+        return f"<Accommodation accommodation_id={self.accommodation_id} accommodation_type={self.accommodation_type} accommodation_name={self.accommodation_name} confirmation_number={self.confirmation_number}>"
 
 
 class Budget(db.Model):
@@ -107,52 +154,75 @@ class Budget(db.Model):
     item_name = db.Column(db.String)
     amount = db.Column(db.Integer)
     category = db.Column(db.String)
-    trip_id = db.Column(db.Integer, db.ForeignKey('trips=trip_id'))
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
+
+    trip = db.relationship('Trip', back_populates='budgets')
+
+    def __repr__(self):
+        return f"<Budget budget_id={self.budget_id} item_name={self.item_name} amount={self.amount} category={self.category}>"
+
+
+
+class ToDo(db.Model):
+    """A to do list for each trip."""
+
+    __tablename__= "todos"
+
+    todo_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    task = db.Column(db.String)
+    is_done = db.Column(db.Boolean)
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
+
+    trip = db.relationship('Trip', back_populates='todos')
+
+    def __repr__(self):
+        return f"<ToDo todo_id={self.todo_id} task={self.task} is_done={self.is_done}>"
+
+
+class Participant(db.Model):
+    """Participants for each trip."""
+
+    __tablename__= "participants"
+
+    participant_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
+
+    trip = db.relationship('Trip', back_populates='participants')
+    conversation = db.relationship("Conversation", secondary="trippartconv", back_populates="participant")
+
+    def __repr__(self):
+        return f"<Participant participant_id={self.participant_id} user_id={self.user_id} trip_id={self.trip_id}>"
+
+
+class Conversation(db.Model):
+    """Conversations for each trip."""
+
+    __tablename__= "conversations"
+
+    conversation_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    message = db.Column(db.String)
+    created_at = db.Column(db.Integer)
+
+    participant = db.relationship("Participant", secondary="trippartconv", back_populates="conversation")
+
+    def __repr__(self):
+        return f"<Conversation conversation_id={self.conversation_id} message={self.message} created_at={self.created_at}>"
 
 
 
 
+class TripParticipantsConversation(db.Model):
+    """Middle table for Conversation and Participants for each trip."""
 
+    __tablename__= "tripparticipantconversations"
 
+    trip_participant_conversation_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    participant_id = db.Column(db.Integer, db.ForeignKey('participants.participant_id'), nullable=False)
+    conversation_id = db.Column(db.Integer, db.ForeignKey('conversations.conversation_id'), nullable=False)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def __repr__(self):
+        return f"<TripParticipantsConversation trip_participant_conversation_id={self.trip_participant_conversation_id} participant_id={self.participant_id} conversation_id={self.conversation_id}
 
 
 
@@ -167,7 +237,7 @@ class Budget(db.Model):
 
 
 def connect_to_db(app):
-    """Connect to database."""
+    
 
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///travel'
     app.config['SQLALCHEMY_ECHO'] = True
@@ -180,4 +250,3 @@ if __name__ == '__main__':
     from server import app
 
     connect_to_db(app)
-    
