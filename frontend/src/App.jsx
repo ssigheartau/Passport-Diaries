@@ -15,6 +15,7 @@ function App() {
   const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
   const [zoom, setZoom] = useState(9);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
 
@@ -25,7 +26,16 @@ function App() {
       center: [lng, lat],
       zoom: zoom,
     });
-  });
+  }, [isLoggedIn]);
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+  };
+ 
   return (
     <div>
       <LoginRegister />
