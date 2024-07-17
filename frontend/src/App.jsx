@@ -15,10 +15,8 @@ function App() {
   const [lng, setLng] = useState(-70.9);
   const [lat, setLat] = useState(42.35);
   const [zoom, setZoom] = useState(9);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
-
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
@@ -26,27 +24,22 @@ function App() {
       center: [lng, lat],
       zoom: zoom,
     });
-  }, [isLoggedIn]);
-
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
-
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
+  });
+  
  
-  return (
-    <div>
-      <LoginRegister />
-      {/* <div className="App">
+    return (
+      <div>
+        <LoginRegister />
+      
+      <div className="App">
         <div className="sidebar">
           Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
         </div>
         <div ref={mapContainer} className="map-container" />
-    </div> */}
-    </div>
-  );
-}
+      </div>
+      </div>
+    );
+  }
+
 
 export default App

@@ -1,12 +1,13 @@
 """Server for travel app."""
 
 from flask import Flask 
-import crud as crud
-from model import connect_to_db
+import backend.crud as crud
+from backend.model import connect_to_db
 
 
 app = Flask(__name__)
 
+app.secret_key = "dev"
 
 
 
