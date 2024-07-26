@@ -30,9 +30,11 @@ class Trip(db.Model):
 
     trip_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
     trip_name = db.Column(db.String)
+    longitude = db.Column(db.Float, nullable=False)
+    latitude = db.Column(db.Float, nullable=False)
     location = db.Column(db.String)
-    start_date = db.Column(db.Integer)
-    end_date = db.Column(db.Integer)
+    start_date = db.Column(db.Date)
+    end_date = db.Column(db.Date)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
     user = db.relationship('User', back_populates='trips')
@@ -58,7 +60,7 @@ class Itinerary(db.Model):
     itinerary_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
     name = db.Column(db.String)
     category = db.Column(db.String)
-    date = db.Column(db.Integer)
+    date = db.Column(db.Date)
     time = db.Column(db.Integer)
     tickets_bought = db.Column(db.Boolean)
     address = db.Column(db.String)
@@ -111,8 +113,8 @@ class Transport(db.Model):
     transport_type = db.Column(db.String)
     pick_up_time = db.Column(db.Integer)
     drop_off_time = db.Column(db.Integer)
-    start_day = db.Column(db.Integer)
-    end_day = db.Column(db.Integer)
+    start_day = db.Column(db.Date)
+    end_day = db.Column(db.Date)
     extra_details = db.Column(db.String)
     trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
 
@@ -134,8 +136,8 @@ class Accommodation(db.Model):
     address = db.Column(db.String)
     check_in = db.Column(db.Integer)
     check_out = db.Column(db.Integer)
-    start_day = db.Column(db.Integer)
-    end_day = db.Column(db.Integer)
+    start_day = db.Column(db.Date)
+    end_day = db.Column(db.Date)
     extra_details = db.Column(db.String)
     trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
 
@@ -230,20 +232,18 @@ class TripParticipantsConversation(db.Model):
 
 
 
-def connect_to_db(app):
+def connect_to_db(flask_app, db_uri="postgresql:///passport_diaries"):
+    flask_app.config["SQLALCHEMY_DATABASE_URI"] = db_uri
+    flask_app.config["SQLALCHEMY_ECHO"] = echo = True
+    flask_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql:///travel'
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-    app.config['SQLALCHEMY_ECHO'] = True
+    db.app = flask_app
+    db.init_app(flask_app)
 
-    db.app = app
-    db.init_app(app)
+    print("Connected to the db!")
 
-    print('Connected to database!')
-
-
-if __name__ == '__main__':
-    from backend.server import app
+if __name__ == "__main__":
+    from server import app
 
     connect_to_db(app)
 

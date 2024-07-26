@@ -1,10 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
 
-/* .map-container {
-  height: 400px;
-  margin-top: 50px;
+.map-container {
+  height: 400px; 
 }
-	
 .sidebar {
   background-color: rgb(35 55 75 / 90%);
   color: #fff;
@@ -16,4 +15,37 @@
   left: 0;
   margin: 12px;
   border-radius: 4px;
-} */
+}
+.geocoder {
+  position: absolute;
+  z-index: 1;
+  width: 50%;
+  left: 50%;
+  margin-left: -25%;
+  top: 30px; /* Adjust as needed */
+}
+
+.mapboxgl-ctrl-geocoder {
+  min-width: 100%;
+}
+
+* {
+  /* margin: 0; */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: url('./Components/Assets/background.jpg') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+
+
+  

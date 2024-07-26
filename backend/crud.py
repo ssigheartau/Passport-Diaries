@@ -1,6 +1,6 @@
 """CRUD operations."""
 
-from backend.model import db, User, Trip, Itinerary, Favorite, Participant, Conversation,TripParticipantsConversation, connect_to_db
+from model import db, User, Trip, Itinerary, Favorite, Participant, Conversation,TripParticipantsConversation, connect_to_db
 
 def create_user(username, password, first_name, last_name, email):
     """Create and return a new user."""
@@ -57,5 +57,5 @@ def all_favorite():
 
 
 if __name__ == '__main__':
-    from backend.server import app
+    from server import app
     connect_to_db(app)
