@@ -19,6 +19,7 @@ const MyMap = () => {
     const [tripName, setTripName] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
+    const [location, setLocation] = useState('');
     const [tripDetails, setTripDetails] = useState([]);
     // const [tripStartDate, setTripStartDate] = useState('');
     // const [tripEndDate, setTripEndDate] = useState('');
@@ -74,6 +75,7 @@ const MyMap = () => {
             const coords = e.result.geometry.coordinates;
             setLongitude(coords[0]);
             setLatitude(coords[1]);
+            setLocation(e.result.place_name);
             // saveGeocodingResult(coords[0], coords[1]);
             
         });
@@ -103,6 +105,7 @@ const MyMap = () => {
             body: JSON.stringify({ trip_name: tripName,
               longitude,
               latitude,
+              location,
               start_date: startDate,
               end_date: endDate,
               user_id: userId}),
@@ -122,6 +125,7 @@ const MyMap = () => {
 
                 // Option 2 -- set tripDetails to the entire responseJson object
                 setTripDetails(responseJson.results)
+                setLocation('')
                 setStartDate('')
                 setEndDate('')
                 // setTripStartDate(new Date(responseJson.start_date).toDateString())
