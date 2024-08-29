@@ -17,6 +17,7 @@ class User(db.Model):
     email = db.Column(db.String, unique=True)
     trips = db.relationship('Trip', back_populates='user')
     participants = db.relationship('Participant', back_populates='user')
+    activities = db.relationship('Activity', back_populates='user') 
 
     def __repr__(self):
         return f"<User user_id={self.user_id} email={self.email} username={self.username}>"
@@ -38,6 +39,7 @@ class Trip(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
     user = db.relationship('User', back_populates='trips')
+    activities = db.relationship('Activity', back_populates='trip') 
     itineraries = db.relationship('Itinerary', back_populates='trip')
     favorites = db.relationship('Favorite', back_populates='trip')
     packings = db.relationship('Packing', back_populates='trip')
@@ -61,7 +63,7 @@ class Itinerary(db.Model):
     name = db.Column(db.String)
     category = db.Column(db.String)
     date = db.Column(db.Date)
-    time = db.Column(db.Integer)
+    time = db.Column(db.Time)
     tickets_bought = db.Column(db.Boolean)
     address = db.Column(db.String)
     trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'))
@@ -70,6 +72,24 @@ class Itinerary(db.Model):
 
     def __repr__(self):
         return f"<Itinerary itinerary_id={self.itinerary_id} name={self.name} category={self.category}>"
+    
+class Activity(db.Model):
+    """A user's saved activity."""
+    __tablename__= "activities"
+
+    activity_id = db.Column(db.Integer, autoincrement= True, primary_key=True)
+    name = db.Column(db.String)
+    details = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    trip_id = db.Column(db.Integer, db.ForeignKey('trips.trip_id'), nullable=True) 
+    location = db.Column(db.JSON)  
+    rating = db.Column(db.Float)  
+
+    user = db.relationship('User', back_populates='activities')
+    trip = db.relationship('Trip', back_populates='activities')
+
+    def __repr__(self):
+        return f"<Activity activity_id={self.activity_id} name={self.name}>"
 
 
 class Favorite(db.Model):
@@ -246,4 +266,4 @@ if __name__ == "__main__":
     from server import app
 
     connect_to_db(app)
-
+    app.app_context().push()

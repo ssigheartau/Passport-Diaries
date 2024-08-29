@@ -8,7 +8,7 @@ const TripCard = ({ trip }) => {
     };
 
     return (
-        <div className="trip-card" onClick={handleClick}>
+        <div className="trip-cards" onClick={handleClick}>
             <h3>{trip.trip_name} {trip.location}</h3>
             
             <p>{trip.start_date} - {trip.end_date}</p>

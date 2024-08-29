@@ -1,0 +1,56 @@
+.NavbarItems{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, .2);
+    width: 100%;
+    height: 80px;
+    backdrop-filter: blur(30px);
+    border: px solid rgba(255, 255, 255, .1);
+    background:#1e3d58; 
+    /* color: #edf2fa; */
+    margin-bottom: 50px;
+    letter-spacing: 1px;
+    margin-left: 0 px;
+    
+
+}
+.navbar-logo {
+    color:#e8eef1;
+    font-size: 2.5rem;
+    cursor: pointer;
+  
+}
+
+.nav-menu{
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-gap: 10px;
+    list-style: none;
+    align-items: center;
+   
+}
+
+.cname{
+    text-decoration: none;
+    color:#e8eef1;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 0.7rem 2rem;
+    white-space: nowrap;
+    letter-spacing: 1px;
+    
+}
+
+.cname .icon{
+    margin-right: 8px;    
+    
+}
+
+.cname:hover {
+    background-color: #057dcd;
+    color: #fff;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}

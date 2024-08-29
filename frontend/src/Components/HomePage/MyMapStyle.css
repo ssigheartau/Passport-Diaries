@@ -1,0 +1,231 @@
+.sidebar{
+    visibility: hidden;
+}
+
+
+.map-container{
+    margin:auto;
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0px 30px;
+    box-shadow: 0 0 20px ;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    color: #fff;
+
+    
+}
+
+.your-trip{
+    font-weight: 600;
+    font-size: 33px;
+    color: #f7ebe7;
+    margin-left: 1300px;
+    margin-bottom: 15px;
+   padding-top: 10px;
+   padding-bottom: 0;
+   letter-spacing: 2px;
+}
+
+/* Form Box for Trip */
+.form-box-trip-form {
+    height: auto;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 65%;
+    border-radius: 13px;
+    backdrop-filter: blur(30px);
+    background: #e8eef1;
+    color: #fff;
+    padding: 20px;
+   
+    
+}
+
+.trip-box {
+    display: flex; 
+    align-items: center;
+    width: 100%; 
+    margin: 0; 
+    padding: 0; 
+}
+
+.add-trip{
+    align-items: center;
+    display: flex;
+    color: #1e3d58;
+    letter-spacing: 1px;
+    white-space: nowrap; 
+    font-size: 25px;
+    margin-right: 10px;
+
+
+}
+
+.trip-name, .start-date, .end-date {
+    background: transparent;
+    border: none;
+    outline: none;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1e3d58;
+    padding: 20px;
+    margin: 0; 
+}
+
+.trip-name {
+    width: 30%;
+    color: #f7ebe7;
+    border: 2px solid #88a2c4;
+    border-radius: 40px;
+    margin-left: 5px;
+    margin-right: 10px;
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-right: none; 
+}
+
+.start-date {
+    width: 30%;
+    border: 2px solid #88a2c4;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 40px;
+    border-right: 5; 
+    border-left: 5; 
+}
+
+.end-date {
+    width: 30%;
+    border: 2px solid #88a2c4;
+    border-radius: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-left: none; 
+}
+
+.trip-box button {
+    width: 200px;
+    background: transparent;
+    color: #1e3d58;
+    border: none;
+    outline: none;
+    border: 2px solid #88a2c4;
+    font-weight: 600;
+    font-size: 16px;
+    
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    margin-left: 0; 
+    letter-spacing: 1px;
+}
+
+
+
+    
+    
+
+.trip-box button:hover {
+    background-color: #057dcd;
+    color: #fff;
+    border-radius: 4px;
+    transition: all 0.2s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+.upcoming-trips{
+    font-weight: 1000;
+    font-size: 40px;
+    color: #03045e;
+    margin-left: 700px;
+   padding-top: 50px;
+   padding-bottom: 0;
+   letter-spacing: 1px;
+   
+  
+  
+   text-decoration: underline;
+   text-decoration-color:#262d79 ;
+
+
+
+
+}
+.trip-card {
+    display: flex;
+    
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1520px; 
+    max-height: 1000px ;
+ }
+
+.trip-cards{
+    width:auto;
+    overflow:hidden;
+    box-shadow:0px 0px 15px -5px;
+    transition: 0.3s;
+    animation: ease-in;
+    margin: 100px;
+    margin-top: 50px;
+    padding: 60px 60px 60px 60px;
+    background: transparent;
+    backdrop-filter: blur(60px);
+    background-color: #a9c9dd ;
+    margin-bottom: 50px;
+    justify-content: space-between;
+    color: #262d79;
+    text-align: center;    
+    font-style: italic;
+    
+    
+   
+}
+
+.trip-cards:hover{
+    transform: scale(1.1);
+    box-shadow:0px 0px 15px -5px;
+
+}
+
+
+.popup {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; 
+    color: white;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-size: 16px;
+    font-weight: bold;
+    opacity: 0; 
+    animation: fadeInOut 3s ease-in-out; 
+  }
+  
+  @keyframes fadeInOut {
+    0%, 100% {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    10%, 90% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  

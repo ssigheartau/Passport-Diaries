@@ -4,7 +4,7 @@ import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
 import { useNavigate } from "react-router-dom";
 import TripCard from "./TripCard";
-
+import './MyMapStyle.css';
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
@@ -14,7 +14,7 @@ const MyMap = () => {
     const map = useRef(null);
     const [lng, setLng] = useState(-70.9);
     const [lat, setLat] = useState(42.35);
-    const [zoom, setZoom] = useState(9);
+    const [zoom, setZoom] = useState(5);
 
     const [tripName, setTripName] = useState('');
     const [startDate, setStartDate] = useState('');
@@ -176,21 +176,40 @@ const MyMap = () => {
     console.log('tripDetails state', tripDetails)
     return (
       <div>
-          <div className="sidebar">
-              <p>Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}</p>
-          </div>
-          <div className="map-container" ref={mapContainer} />
-          <div className="form-box trip-form">
-              <form onSubmit={handleAddTrip}>
-                  <h1>Add a Trip</h1>
+        <div className="sidebar">
+            
+            <p>Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}</p>
+        </div>
+        <div className='your-trip'>Your trip awaits...</div>
+        <div class="things">
+  <div class="content">
+    <div class="arrow">
+      <div class="curve"></div>
+      <div class="point"></div>
+    </div>
+  </div> 
+  <div class="content">
+    
+  </div>
+</div>
+        <div className="map-container" ref={mapContainer} />
+        <div className="form-box-trip-form">
+              <form className="trip-box" onSubmit={handleAddTrip}>
+                  <h1 className="add-trip">Add a Trip</h1>
+
                   <input
+                      className="trip-name"
                       type="text"
                       placeholder="Trip Name"
                       value={tripName}
+                      
                       onChange={(e) => setTripName(e.target.value)}
                       required
                   />
+                  
                   <input
+                      
+                      className="start-date"
                       type="date"
                       placeholder="Start Date"
                       value={startDate}
@@ -198,6 +217,7 @@ const MyMap = () => {
                       required
                   />
                   <input
+                      className="end-date"
                       type="date"
                       placeholder="End Date"
                       value={endDate}
@@ -215,7 +235,9 @@ const MyMap = () => {
                 </div>
               ))} */}
           </div>
-          <div className="trip-cards">
+          
+          <div className='upcoming-trips'>Upcoming Trips</div>
+          <div className="trip-card">
                 {tripDetails.length > 0 && tripDetails.map((trip, i) => (
                   <TripCard key={i} trip={trip} />
               ))}

@@ -1,7 +1,613 @@
-.day-card {
-    border: 1px solid #ddd;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
-  }
+.t-name{
+  font-weight: 800;
+  font-size: 40px;
+  color: #475492;
+  margin-left: 1300px;
+  margin-bottom: 0px;
+ padding-top: 0px;
+ padding-bottom: 0;
+ letter-spacing: 2px;
+}
+
+.trip-location{
+  font-weight: 400;
+  font-size: 25px;
+  color: #333;
+  margin-left: 1050px;
+  margin-bottom: 15px;
+ padding-top: 10px;
+ padding-bottom: 0;
+ letter-spacing: 2px;
+ white-space: nowrap;
+
+}
+
+.map-container{
+  margin:auto;
+  position: relative;
+  width: 1200px;
+  height: 380px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 0px 30px;
+  box-shadow: 0 0 20px ;
+  margin-top: 30px;
+  margin-bottom: 40px;
+  color: #fff;
+
+  
+}
+
+/* Tab buttons */
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  /* background: #a9c9dd; */
+  padding: 10px;
+  /* box-shadow: 0 48px 80px -32px rgba(0,0,0,0.3); */
+  border-radius: 8px;
+  
+  max-width: 1500px;
+  margin: 20px auto;
+}
+
+.tab-button {
+  background: #e8eef1;
+  grid-template-columns: repeat( 3 , auto);
+  border: none;
+  font-size: 16px;
+  color: #1e3d58;
+  padding: 15px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+  box-shadow: 50px rgba(19, 9, 9, 0.2);
+  outline: none;
+  width: 100%;
+  height: 70px;
+}
+
+.tab-button:last-child {
+  margin-right: 0;
+}
+
+.tab-button:hover {
+  background: #d8d8d8;
+}
+
+.tab-button.active {
+  background: #1889e6;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.tab-button:focus {
+  outline: none;
+}
+/* Tab button end */
+
+/* Yelp specific buttons */
+.yelp-controls {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-gap:none;
+    list-style: none;
+    margin-bottom: 200px;
+    margin-left:37px ;
+    /* align-items: center; */
+}
+
+
+/* Only search bar/ button box */
+.ylp{
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  grid-gap: 40px;
+  list-style: none;
+  align-items: center;
+  margin-top: 1px;
+  margin-right: 600px;
+  width: 300px;
+  
+}
+
+
+.activ{
+  background: #e8eef1;
+  border: none;
+  font-size: 16px;
+  color: #333;
+  height: 40px;
+  width: 200px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  margin-left: 100px;
+}
+
+.activ:hover{
+  transform: scale(1.1);
+  box-shadow:0px 0px 15px -5px;
+}
+
+.res{
+  background: #e8eef1;
+  height: 40px;
+  width: 200px;
+  border: none;
+  font-size: 16px;
+  color: #333;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.restaurant:hover{
+  transform: scale(1.1);
+  box-shadow:0px 0px 15px -5px;
+}
+
+
+
+.yelp-search {
+  margin-top: 1px;
+  padding: 1px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.yelp-search-results {
+  color: #677bab;
+} */
+
+
+/* Styling for the search box and button */
+.search-box {
+  display: flex;
+  justify-content: center;
+  /* margin-bottom: 30px; */
+}
+
+.search-box input {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid #1889e6;
+  border-radius: 5px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-box input:focus {
+  border-color: #0f69c1;
+}
+
+.search-button {
+  background: #1889e6;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  margin-right: 10px;
+  outline: none;
+}
+
+.search-button:hover {
+  background: #0f69c1;
+}
+
+/* Yelp results styling */
+.yelp-results-wrapper {
+  max-width: 1120px;
+  width: 100%;
+  padding: 40px 0;
+  margin-left: -400px;
+
+}
+
+.yelp-results {
+  display: flex; /* Enables the horizontal slider */
+  gap: 20px;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding-bottom: 20px;
+  scroll-behavior: smooth; /* Smooth scrolling */
+  border-radius: 10px;
+}
+
+.yelp-result.card {
+  flex-shrink: 0; /* Prevents cards from shrinking */
+  width: 250px; /* Width of each card */
+  border-radius: 25px;
+  background-color: #FFF;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.yelp-result.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.image-content,
+.card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 14px;
+  
+}
+
+.image-content {
+  position: relative;
+  row-gap: 5px;
+  padding: 25px 0;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #88a2c4;
+  border-radius: 25px 25px 0 25px;
+}
+
+.overlay::before,
+.overlay::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: -40px;
+  height: 40px;
+  width: 40px;
+  background-color: #88a2c4;
+}
+
+.overlay::after {
+  border-radius: 0 25px 0 0;
+  background-color: #FFF;
+}
+
+.card-image {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  background: #FFF;
+  padding: 3px;
+}
+
+.card-image .card-img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+  margin-top: 12px;
+  text-align: center;
+}
+
+.description {
+  font-size: 14px;
+  color: #707070;
+  text-align: center;
+}
+
+
+
+.button {
+  border: none;
+  font-size: 16px;
+  color: #FFF;
+  padding: 8px 16px;
+  background-color: #4070F4;
+  border-radius: 6px;
+  margin: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background: #265DF2;
+}
+
+.add-to-iti {
+  background: #677bab;
+  border: none;
+  padding: 10px 15px;
+  color: #fff;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  outline: none;
+  margin-top: 20px;
+
+}
+
+.add-to-iti:hover {
+  background: #0f69c1;
+}
+
+
+
+
+
+
+.day-cards-container {
+  display: flex;
+  gap: 20px; 
+  overflow-x: auto; 
+  padding: 20px; 
+  margin:0px 80px 0px 80px;
+}
+
+.itinerary-card {
+  background-color: #e8eef1; 
+  border-radius: 10px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  min-width: 250px; 
+  min-height: 300px;
+  flex-shrink: 0; 
+  display: flex;
+  flex-direction: column;
+}
+
+.day-card-date {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px; 
+  text-align: center;
+  color: #4070F4; 
+}
+
+.activities {
+  flex-grow: 1; 
+}
+
+.activity-time {
+  font-weight: bold; 
+  margin-right: 5px; 
+}
+
+.details-label {
+  font-weight: bold; 
+  padding-left: 50px;}
+
+.activity p {
+  margin: 5px 0;
+  font-size: 14px; 
+}
+
+
+.add-activity-btn {
+  border: none;
+  font-size: 14px;
+  color: #FFF;
+  padding: 8px 12px;
+  background-color: #4070F4;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center; 
+}
+
+.add-activity-btn:hover {
+  background-color: #265DF2;
+}
+
+
+
+
+
+
+.itinerary-container h2 {
+  font-size: 24px; 
+  font-weight: 600;
+  color: #333; 
+  text-align: center; 
+  margin-bottom: 30px; 
+  text-transform: uppercase; 
+  letter-spacing: 2px; 
+}
+
+
+.itinerary-container {
+  max-width: 1120px;
+  width: 100%;
+  padding: 40px 0;
+  margin: 0 auto;
+}
+
+.itinerary-slider {
+  display: flex; 
+  gap: 20px; 
+  overflow-x: auto; 
+  padding-bottom: 20px;
+  scroll-behavior: smooth;
+  border-radius: 25px;
+}
+
+.itinerary-item.card {
+  flex-shrink: 0; 
+  width: 250px; 
+  border-radius: 20px;
+  background-color: #e8eef1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.itinerary-item h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #4070F4; 
+}
+
+.itinerary-item p {
+  font-size: 14px;
+  color: #707070;
+  margin-bottom: 10px;
+
+}
+
+.add-to-day-btn {
+  border: none;
+  font-size: 14px;
+  color: #FFF;
+  padding: 8px 12px;
+  background-color: #4070F4;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  align-self: center;
+}
+
+.add-to-day-btn:hover {
+  background-color: #265DF2;
+}
+
+
+
+/* Modal styling */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modal h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.modal p {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.modal input[type="text"],
+.modal textarea,
+.modal input[type="time"],
+.modal select {
+  width: 100%;
+  padding: 8px 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.modal textarea {
+  height: 80px;
+  resize: none;
+}
+
+.modal button {
+  background-color: #4070F4;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 10px;
+}
+
+.modal button:hover {
+  background-color: #265DF2;
+}
+
+/* Cancel button style */
+.modal button:last-child {
+  background-color: #d9534f;
+}
+
+.modal button:last-child:hover {
+  background-color: #c9302c;
+}
+
+/* Ensure the background is darkened when modal is open */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
