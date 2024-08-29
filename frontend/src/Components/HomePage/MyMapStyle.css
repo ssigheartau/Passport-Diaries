@@ -166,39 +166,38 @@
 }
 .trip-card {
     display: flex;
-    
-    padding: 20px;
+    gap: 20px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scroll-behavior: smooth;
+    max-width: 1520px;
     margin: 0 auto;
-    max-width: 1520px; 
-    max-height: 1000px ;
- }
+    border-radius: 25px;
+    max-height: 1000px;
+}
 
-.trip-cards{
-    width:auto;
-    overflow:hidden;
-    box-shadow:0px 0px 15px -5px;
-    transition: 0.3s;
-    animation: ease-in;
+.trip-cards {
+    width: auto;
+    flex: 0 0 auto;
+    box-shadow: 0px 0px 15px -5px;
+    transition: transform 0.3s ease-in-out;
     margin: 100px;
     margin-top: 50px;
-    padding: 60px 60px 60px 60px;
+    padding: 60px;
     background: transparent;
     backdrop-filter: blur(60px);
-    background-color: #a9c9dd ;
+    background-color: #a9c9dd;
     margin-bottom: 50px;
     justify-content: space-between;
     color: #262d79;
-    text-align: center;    
+    text-align: center;
     font-style: italic;
-    
-    
-   
+    border-radius: 25px;
 }
 
-.trip-cards:hover{
+.trip-cards:hover {
     transform: scale(1.1);
-    box-shadow:0px 0px 15px -5px;
-
+    box-shadow: 0px 0px 15px -5px;
 }
 
 
@@ -206,7 +205,7 @@
     position: fixed;
     top: 20px;
     right: 20px;
-    background-color: #4CAF50; 
+    background-color: #4CAF50;
     color: white;
     padding: 15px 20px;
     border-radius: 5px;
@@ -214,9 +213,9 @@
     z-index: 1000;
     font-size: 16px;
     font-weight: bold;
-    opacity: 0; 
-    animation: fadeInOut 3s ease-in-out; 
-  }
+    opacity: 0;
+    animation: fadeInOut 3s ease-in-out;
+}
   
   @keyframes fadeInOut {
     0%, 100% {
