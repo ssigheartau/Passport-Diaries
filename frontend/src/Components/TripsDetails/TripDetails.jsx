@@ -67,7 +67,7 @@ const TripDetails = () => {
       setDayCards(initialDayCards);  
 
       // Fetch activities
-      fetch('/api/get_activities')
+      fetch(`/api/get_activities/${tripId}`)
         .then((response) => response.json())
         .then((data) => {
           if (data.status === 'ok') {
@@ -76,6 +76,7 @@ const TripDetails = () => {
             console.error("Error fetching activities:", data.message);
           }
         });
+        
 
       // Fetch itinerary
       fetch(`/api/get_itinerary/${tripId}`)
@@ -112,7 +113,7 @@ const TripDetails = () => {
           console.error('Error fetching itinerary:', error);
         });
     }
-  }, [trip]); 
+  }, [trip, tripId]); 
 
   
   const openModal = (activity) => {

@@ -81,7 +81,7 @@
 
 .trip-name {
     width: 30%;
-    color: #f7ebe7;
+    color: #03045e;
     border: 2px solid #88a2c4;
     border-radius: 40px;
     margin-left: 5px;
@@ -228,3 +228,31 @@
     }
   }
   
+
+  .error-message {
+    position: absolute; /* Position relative to the form */
+    top: 0;
+    left: 100%; /* Position it to the right of the button */
+    background-color: #8bb5a0; /* Red color for error */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-size: 14px;
+    font-weight: bold;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+    margin-left: 10px;
+}
+
+.error-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.error-message p {
+    margin: 0;
+}
+

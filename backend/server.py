@@ -191,17 +191,14 @@ def add_activity():
 
     return jsonify({"status": "ok", "activity_id": new_activity.activity_id}), 200
 
-@app.route('/api/get_activities', methods=['GET'])
-def get_activities():
+@app.route('/api/get_activities/<int:trip_id>', methods=['GET'])
+def get_activities(trip_id):
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({"status": "error", "message": "User not logged in"}), 401
 
-    activities = Activity.query.filter_by(user_id=user_id).all()
+    activities = Activity.query.filter_by(user_id=user_id, trip_id=trip_id).all()
     activities_list = [{"id": activity.activity_id, "name": activity.name, "details": activity.details, "location": activity.location, "rating": activity.rating} for activity in activities]
-
-    print(activities_list)
-
 
     return jsonify({"status": "ok", "activities": activities_list}), 200
 

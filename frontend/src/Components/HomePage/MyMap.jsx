@@ -31,6 +31,7 @@ const MyMap = () => {
     const navigate = useNavigate();
     const [trips, setTrips] = useState([]);
     const [tripID, setTripID] = useState('');
+   
 
     // Fetch current user on component mount
     useEffect(() => {
@@ -154,6 +155,7 @@ const MyMap = () => {
 
               // Navigate to the details page of the new trip
               navigate(`/tripdetails/${responseJson.trip_id}`);
+             
           }
   })
         .catch((error) => {
@@ -174,6 +176,7 @@ const MyMap = () => {
     //     setEndDate(event.target.value);
     // };
     console.log('tripDetails state', tripDetails)
+
     return (
       <div>
         <div className="sidebar">
@@ -181,7 +184,7 @@ const MyMap = () => {
             <p>Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}</p>
         </div>
         <div className='your-trip'>Your trip awaits...</div>
-        <div class="things">
+        {/* <div class="things">
   <div class="content">
     <div class="arrow">
       <div class="curve"></div>
@@ -191,7 +194,7 @@ const MyMap = () => {
   <div class="content">
     
   </div>
-</div>
+</div> */}
         <div className="map-container" ref={mapContainer} />
         <div className="form-box-trip-form">
               <form className="trip-box" onSubmit={handleAddTrip}>
@@ -226,7 +229,8 @@ const MyMap = () => {
                   />
                   <button type="submit">Add Trip</button>
               </form>
-              {errorMessage && <p className="error-message">{errorMessage}</p>}
+              {errorMessage && <p className={`error-message ${errorMessage ? 'show' : ''}`}>
+              {errorMessage}</p>}
               {/* {tripDetails.length > 0 && tripDetails.map((trip, i) => (
                 <div className={`trip-result-${i}`}>
                     <p>{trip.trip_name && trip.trip_name}</p>
