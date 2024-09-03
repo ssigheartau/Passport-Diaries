@@ -132,7 +132,7 @@ You should see similar success messages in the console. If you have any issues g
  <img src = screenshots/activities_list.png alt="Activities List"/>
  
 
- 
+
 ## Future Work 
 
 * Each trip will display an image 
@@ -152,6 +152,7 @@ You should see similar success messages in the console. If you have any issues g
 ## About ME
 Sorina Sigheartau created Passport Diaries- for more information, connect on [LinkedIn](https://www.linkedin.com/in/sorina-sigheartau-3358b5255/)
 
-
+[VIEW DEMO ON YOUTUBE](https://youtu.be/iNtTrd5Lsk4)
+ <img src = screenshots/youtube.png alt="youtube"/>
 
 
